@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified"
+    xmlns="sap.m">
+	<!-- <Button core:require="{ handler: 'task/ext/fragment/Create'}" text="Edit" press="handler.onPress" /> -->
+    <Dialog id="_IDDialog"
+        title="college Details"
+        class="sapUiResponsiveContentPadding"
+        >
+        <content>
+         <Input id="idInput" placeholder="Enter CID" />
+        <Input id="nameInput" placeholder="Enter Name" />
+    <!-- <Button text="Upload" press=".onUploadPressed" /> -->
+        </content>
+        <beginButton>
+            <Button id="ok"
+                core:require="{ handler: 'task/ext/fragment/EDIT'}"
+                text="OK"
+                press="handler.handlesave"
+                type="Emphasized"
+                enabled="true" /> 
+        </beginButton>
+        <endButton>
+            <Button id="cancel"
+            core:require="{ handler: 'task/ext/fragment/EDIT'}"
+                text="Cancel"
+                press="handler.handleclose" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

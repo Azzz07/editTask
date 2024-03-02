@@ -1,0 +1,160 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "task",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.12.4",
+      "toolsId": "fa932dff-70c7-4264-a302-ec3a7de6028d"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/ms/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            
+          ],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.121.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "task.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "collegeList",
+          "target": "collegeList"
+        },
+        {
+          "pattern": "college({key}):?query:",
+          "name": "collegeObjectPage",
+          "target": "collegeObjectPage"
+        }
+      ],
+      "targets": {
+        "collegeList": {
+          "type": "Component",
+          "id": "collegeList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/college",
+              "variantManagement": "Page",
+              "navigation": {
+                "college": {
+                  "detail": {
+                    "route": "collegeObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "actions": {
+                    "create": {
+                      "press": "task.ext.controller.Create.create",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "create"
+                    }
+                  },
+                  "columns": {
+                    "EDIT": {
+                      "header": "EDIT",
+                      "position": {
+                        "anchor": "DataField::name",
+                        "placement": "After"
+                      },
+                      "template": "task.ext.fragment.EDIT"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "collegeObjectPage": {
+          "type": "Component",
+          "id": "collegeObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/college"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

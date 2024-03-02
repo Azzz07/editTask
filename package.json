@@ -1,0 +1,39 @@
+{
+    "name": "fauc",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^7",
+        "@sap/cds-hana": "^2",
+        "express": "^4"
+    },
+    "devDependencies": {
+        "@cap-js/sqlite": "^1",
+        "@sap/cds-dk": "^7",
+        "@sap/ux-specification": "^1.120.4",
+        "rimraf": "^3.0.2"
+    },
+    "scripts": {
+        "start": "cds-serve",
+        "watch-cff": "cds watch --open cff/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy fauc --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "watch-sef": "cds watch --open sef/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-seff": "cds watch --open seff/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-math": "cds watch --open math/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-form": "cds watch --open form/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-task": "cds watch --open task/webapp/index.html?sap-ui-xx-viewCache=false"
+    },
+    "sapux": [
+        "app/cff",
+        "app/sef",
+        "app/seff",
+        "app/math",
+        "app/form",
+        "app/task"
+    ]
+}

@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Button core:require="{ handler: 'task/ext/fragment/EDIT'}" text="EDIT" press="handler.onPress" />
+
+	<!-- <mvc:View
+  controllerName="YourControllerName"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"> -->
+
+  <!-- <Dialog
+    id="fixedSizeDialog"
+    title="Available Products"
+    contentWidth="550px"
+    contentHeight="300px"
+    endButton="{i18n>Close}"
+    afterClose="onDialogClose">
+    <List
+      items="{/college}">
+      <StandardListItem
+        title="{cid}"
+        counter="{name}" />
+    </List>
+  </Dialog> -->
+
+<!-- </mvc:View> -->
+
+</core:FragmentDefinition>
